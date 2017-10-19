@@ -74,7 +74,7 @@ ready(function(){
             for (var i = 0; i < modifyNote.length; i++) {
                 modifyNote[i].addEventListener('click', function (event) {
                     
-                         var message = prompt("", "Vul nieuwe tekst in");
+                         var message = prompt("", "Change your sticky!");
                     
                         var id = parseInt(this.id);
                         sn = ApplicationDbContext.getStickyNoteById(id);
