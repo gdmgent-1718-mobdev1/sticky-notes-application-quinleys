@@ -35,6 +35,7 @@ ready(function(){
                                 
                                 <form class="buttons">
                                 <button class="deleteBtn btn btn-outline-danger btn-lg btn-block" id="${element.id}">Delete</button>
+                                <button class="modifyNote btn btn-outline-info btn-lg btn-block" id="${element.id}" data="${element.message}">Modify</button>
                                 
                             </form>
                             </div>
@@ -67,6 +68,19 @@ ready(function(){
                 deleteSticky[i].addEventListener('click', function (event) {
                     var id = parseInt(this.id);
                     ApplicationDbContext.deleteStickyNoteById(id);
+                });
+            }
+            var modifyNote = document.querySelectorAll('.modifyNote');
+            for (var i = 0; i < modifyNote.length; i++) {
+                modifyNote[i].addEventListener('click', function (event) {
+                    
+                         var message = prompt("", "Vul nieuwe tekst in");
+                    
+                        var id = parseInt(this.id);
+                        sn = ApplicationDbContext.getStickyNoteById(id);
+                        sn.message = message;
+                        ApplicationDbContext.updateStickyNote(sn);
+                    
                 });
             }
         },
